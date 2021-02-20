@@ -1,0 +1,13 @@
+<app-card title="Island Form" subtitle="Create new Island">
+    <form [formGroup]="submitForm" autocomplete="off">
+        <div class="row">
+            <div class="col-md-5">
+                <mat-form-field appearance="outline"  class="w-100 example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Name">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+    <button mat-raised-button color="primary" [disabled]="submitForm.invalid" (click)="onSave()"><mat-icon>save</mat-icon> Save Island</button>
+</app-card>

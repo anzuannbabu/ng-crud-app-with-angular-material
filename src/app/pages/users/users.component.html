@@ -1,0 +1,29 @@
+<app-card [title]="cardTitle" subtitle="List of Users">
+    <button mat-raised-button color="primary" (click)="onCreateUser()">Create New User</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.department}}</td>
+                <td>
+                    <span class="text-success" *ngIf="user.active">Active</span>
+                    <span class="text-danger" *ngIf="!user.active">Inactive</span>
+
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="viewUser(user)">View Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</app-card>

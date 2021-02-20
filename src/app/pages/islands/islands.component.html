@@ -1,0 +1,25 @@
+<app-card title="Islands" subtitle="List of Islands">
+    <div class="app-card-actions">
+        <button mat-raised-button color="primary" class="mr-2" (click)="onAddIsland()">Add New Island</button>
+    </div>
+    <!-- islands list -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sn</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let island of islandList;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{island.name}}</td>
+                <td>
+                    <button mat-raised-button color="primary" (click)="onEdit(island)"><mat-icon>edit</mat-icon> Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- ./islands list -->
+</app-card>
