@@ -14,6 +14,11 @@ export class CreateIslandComponent implements OnInit {
 
   submitForm: FormGroup;
 
+  createFormData = {
+    crudMode: 'create',
+    island: null
+  }
+
   constructor(private islandService: IslandService, private router: Router) { }
 
   ngOnInit(): void {

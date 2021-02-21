@@ -23,6 +23,7 @@ import { IslandsComponent } from './pages/islands/islands.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateIslandComponent } from './pages/create-island/create-island.component';
 import { EditIslandComponent } from './pages/edit-island/edit-island.component';
+import { IslandFormComponent } from './components/islands/island-form/island-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EditIslandComponent } from './pages/edit-island/edit-island.component';
     CreateUserComponent,
     IslandsComponent,
     CreateIslandComponent,
-    EditIslandComponent
+    EditIslandComponent,
+    IslandFormComponent
   ],
   imports: [
     BrowserModule,

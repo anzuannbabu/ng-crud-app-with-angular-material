@@ -19,12 +19,13 @@ export class IslandService {
   }
 
   update(body: any) {
-
+    return this.http.put(this.apiUrl,body);
   }
 
   getById(id: number) {
-
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get(url);
   }
 }
 
-
+//
