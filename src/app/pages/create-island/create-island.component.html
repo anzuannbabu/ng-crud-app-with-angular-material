@@ -1,3 +1,7 @@
 <app-card title="Island Form" subtitle="Create new Island">
-    <app-island-form [formData]="createFormData"></app-island-form>
+    <div class="app-card-actions">
+        <button mat-raised-button (click)="goBack()">Go Back</button>
+        
+    </div>
+    <app-island-form [formData]="createFormData" (saved)="onSaved()"></app-island-form>
 </app-card>

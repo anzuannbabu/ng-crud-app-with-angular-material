@@ -12,37 +12,22 @@ import { IslandService } from 'src/app/services/island.service';
 })
 export class CreateIslandComponent implements OnInit {
 
-  submitForm: FormGroup;
-
   createFormData = {
     crudMode: 'create',
     island: null
   }
 
-  constructor(private islandService: IslandService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.configureSubmitForm();
+    
   }
 
-  configureSubmitForm() {
-    this.submitForm = new FormGroup({
-      name: new FormControl(null, [Validators.required])
-    });
+  onSaved() {
+    this.goBack();
   }
 
-  onSave() {
-    const values = this.submitForm.value;
-    console.log('islands form values => ', values);
-
-    this.islandService.add(values).subscribe(
-      (response: any) => {
-        console.log("create island response =>", response);
-        this.router.navigateByUrl('/islands');
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      })
+  goBack() {
+    this.router.navigateByUrl('/islands');
   }
-
 }

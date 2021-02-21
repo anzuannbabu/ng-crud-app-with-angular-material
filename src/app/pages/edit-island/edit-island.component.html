@@ -1,3 +1,7 @@
 <app-card title="Island Form" subtitle="Update Island">
-    <app-island-form [formData]="editFormData"></app-island-form>
+    <div class="app-card-actions">
+        <button mat-raised-button (click)="goBack()">Go Back</button>
+        
+    </div>
+    <app-island-form [formData]="editFormData" (saved)="onSaved()"></app-island-form>
 </app-card>

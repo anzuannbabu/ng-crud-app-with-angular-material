@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Island } from 'src/app/models/island.model';
+
 import { IslandService } from 'src/app/services/island.service';
 
 @Component({
@@ -12,8 +14,10 @@ export class IslandFormComponent implements OnInit, OnChanges {
 
   @Input() formData: {
     crudMode: string,//edit or create
-    island: any
+    island: Island
   }
+
+  @Output() saved: EventEmitter<any> = new EventEmitter<any>(null);
 
   submitForm: FormGroup;
 
@@ -54,6 +58,7 @@ export class IslandFormComponent implements OnInit, OnChanges {
         (response: any) => {
           console.log("create island response =>", response);
           //this.router.navigateByUrl('/islands');
+          this.saved.emit();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -71,6 +76,7 @@ export class IslandFormComponent implements OnInit, OnChanges {
         (response: any) => {
           console.log("update island response =>", response);
           //this.router.navigateByUrl('/islands');
+          this.saved.emit();
         },
         (error: HttpErrorResponse) => {
           console.log(error);

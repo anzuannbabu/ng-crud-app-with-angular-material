@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Island } from 'src/app/models/island.model';
 import { IslandService } from 'src/app/services/island.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { IslandService } from 'src/app/services/island.service';
 })
 export class IslandsComponent implements OnInit {
 
-  islandList: any[] = [];
+  islandList: Island[] = [];
 
   constructor(private islandsService: IslandService, private router: Router) { }
 
@@ -18,7 +19,7 @@ export class IslandsComponent implements OnInit {
   }
 
   fetchAllIslands() {
-    this.islandsService.getAll().subscribe((response: any[]) => {
+    this.islandsService.getAll().subscribe((response: Island[]) => {
       console.log("islands response => ", response);
       this.islandList = response;
     })
@@ -28,7 +29,7 @@ export class IslandsComponent implements OnInit {
     this.router.navigateByUrl('/create-island');
   }
 
-  onEdit(island:any) {
+  onEdit(island:Island) {
     this.router.navigateByUrl('/edit-island/'+island.id);
   }
 
