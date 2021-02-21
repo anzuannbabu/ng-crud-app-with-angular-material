@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Island } from '../models/island.model';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Island } from '../models/island.model';
 })
 export class IslandService {
 
-  private apiUrl: string = "http://41.73.213.144:8650/api/Island";
+  private apiUrl: string = environment.apiUrl + "/Island";
 
   constructor(private http: HttpClient) { }
 

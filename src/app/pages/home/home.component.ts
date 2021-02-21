@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { TestService } from 'src/app/services/test.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   
 
   //dependency injection
-  constructor() { }
+  constructor(private testService: TestService) { }
 
   ngAfterViewInit(): void {
     console.log("html view after init");
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log("home initialized");
+    console.log("service value => ", this.testService.name);
   }
 
 

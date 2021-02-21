@@ -5,25 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
-import {MatCardModule} from '@angular/material/card';
-import { CardComponent } from './components/card/card.component';
+
 import { CreateUserComponent } from './pages/create-user/create-user.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
 import { IslandsComponent } from './pages/islands/islands.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CreateIslandComponent } from './pages/create-island/create-island.component';
 import { EditIslandComponent } from './pages/edit-island/edit-island.component';
 import { IslandFormComponent } from './components/islands/island-form/island-form.component';
+import { UserFormComponent } from './components/users/user-form/user-form.component';
+import { DatatableComponent } from './pages/datatable/datatable.component';
+import { SharedModule } from './shared/shared.module';
+import { TestService } from './services/test.service';
 
 @NgModule({
   declarations: [
@@ -31,30 +24,22 @@ import { IslandFormComponent } from './components/islands/island-form/island-for
     MainLayoutComponent,
     HomeComponent,
     UsersComponent,
-    CardComponent,
     CreateUserComponent,
     IslandsComponent,
     CreateIslandComponent,
     EditIslandComponent,
-    IslandFormComponent
+    IslandFormComponent,
+    UserFormComponent,
+    DatatableComponent,
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    HttpClientModule
   ],
-  providers: [],
+  providers: [TestService],
+  //entryComponents: [UserFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

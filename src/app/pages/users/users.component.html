@@ -1,5 +1,7 @@
 <app-card [title]="cardTitle" subtitle="List of Users">
-    <button mat-raised-button color="primary" (click)="onCreateUser()">Create New User</button>
+    <div class="app-card-actions">
+        <button mat-raised-button color="primary" (click)="onCreateUser()">Create New User</button>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -22,6 +24,7 @@
                 </td>
                 <td>
                     <button mat-raised-button color="primary" (click)="viewUser(user)">View Details</button>
+                    <button mat-raised-button color="warn" (click)="editUser(user)"><mat-icon>edit</mat-icon> Edit</button>
                 </td>
             </tr>
         </tbody>
