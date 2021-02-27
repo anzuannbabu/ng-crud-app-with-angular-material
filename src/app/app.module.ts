@@ -17,6 +17,12 @@ import { UserFormComponent } from './components/users/user-form/user-form.compon
 import { DatatableComponent } from './pages/datatable/datatable.component';
 import { SharedModule } from './shared/shared.module';
 import { TestService } from './services/test.service';
+import { IslandPopupFormComponent } from './components/islands/island-popup-form/island-popup-form.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
+import { customDataServiceConfig, entityConfig } from './entity-metadata';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +37,22 @@ import { TestService } from './services/test.service';
     IslandFormComponent,
     UserFormComponent,
     DatatableComponent,
+    IslandPopupFormComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    EntityDataModule.forRoot(entityConfig),
   ],
-  providers: [TestService],
+  providers: [
+    TestService,
+    { provide: DefaultDataServiceConfig, useValue: customDataServiceConfig }
+  ],
   //entryComponents: [UserFormComponent],
   bootstrap: [AppComponent]
 })

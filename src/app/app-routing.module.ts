@@ -7,12 +7,15 @@ import { DatatableComponent } from './pages/datatable/datatable.component';
 import { EditIslandComponent } from './pages/edit-island/edit-island.component';
 import { HomeComponent } from './pages/home/home.component';
 import { IslandsComponent } from './pages/islands/islands.component';
+import { LoginComponent } from './pages/login/login.component';
 import { UsersComponent } from './pages/users/users.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -42,17 +45,22 @@ const routes: Routes = [
         path: 'table',
         component: DatatableComponent
       },
-      {
+      /* {
         path: 'user-management',
         loadChildren: () => import('./modules/user-management/user-management.module').then(m => m.UserManagementModule)
-      }
+      } */
     ]
   },
-  /* {
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'user-management',
+    canActivate: [AuthGuard],
     component: MainLayoutComponent,
     loadChildren: () => import('./modules/user-management/user-management.module').then(m => m.UserManagementModule)
-  } */
+  }
 ];
 
 @NgModule({
